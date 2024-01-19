@@ -32,10 +32,11 @@ $('.galeria-5').slick({
 
 $('.multiple-items').slick({
   arrows: false,
-  infinite:true,
-  focusOnSelect: true,
-  variableWidth: true,
   autoplay: true,
-  autoplaySpeed: 1000
+  autoplaySpeed: 0,
+  speed: 9000,
+  variableWidth: true, 
+  centerMode: false,
+  cssEase: "linear",
  
 });

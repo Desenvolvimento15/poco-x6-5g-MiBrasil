@@ -63,10 +63,9 @@
                 <p class="p-center txt-white">A enorme área de dissipação de calor composta de grafite e grafeno para um desempenho aprimorado de dissipação de calor que garante a estabilidade duradoura do dispositivo.</p>
     
             </div>
-    
-          
-             <img src="./media/03.png" alt="" class="img-fluid">
-                <!--Video--> 
+           
+         
+            
         </div>
 
 
@@ -199,18 +198,18 @@
  
         </div>
 
-        <div class="row-s101">
+        <div class="row-s101 brown">
     
             <div class="col-sm-12-s101 spacing brown">
     
-                <h2 class="subtitle txt-yellon">Zoom direto no sensor<brr>Sem perder qualidade</h2>
+                <h2 class="subtitle txt-yellon">Zoom direto no sensor<br>Sem perder qualidade</h2>
                 <p class="p-center txt-white">Com o zoom óptico sem perdas de 2x, a imagem permanece nítida mesmo quando ampliada, para que você possa capturar closes vívidos mesmo à distância.</p>
 
             </div>
 
             <div class="grid-poco brown spacing">
-                <img src="./media/20.jpg" alt="">
-                <img src="./media/21.jpg" alt="">
+                <img src="./media/20.jpg" alt="" class="img-fluid">
+                <img src="./media/21.jpg" alt="" class="img-fluid">
             </div>
 
             <div class="col-sm-12-s101 spacing brown">
@@ -233,13 +232,13 @@
             <h2 class="subtitle txt-yellon">Film Camera</h2>
             <p class="p-center txt-white">Novos filtros de filme e molduras estão agora disponíveis para aprimorar sua criatividade.</p>
             </div>
-            <div class=" col-sm-12-s101 multiple-items">
+            <div class="col-sm-12-s101 multiple-items">
 
-                <div><img class="img-fluid" src="./media/23.png" alt=""></div>
-                <div><img class="img-fluid" src="./media/24.png" alt=""></div>
-                <div><img class="img-fluid" src="./media/25.png" alt=""></div>
-                <div><img class="img-fluid" src="./media/26.png" alt=""></div>
-                <div><img class="img-fluid" src="./media/27.png" alt=""></div>
+                <div style="margin: 1rem;"><img class="img-fluid" src="./media/23.png" alt=""></div>
+                <div style="margin: 1rem;"><img class="img-fluid" src="./media/24.png" alt=""></div>
+                <div style="margin: 1rem;"><img class="img-fluid" src="./media/25.png" alt=""></div>
+                <div style="margin: 1rem;"><img class="img-fluid" src="./media/26.png" alt=""></div>
+                <div style="margin: 1rem;"><img class="img-fluid" src="./media/27.png" alt=""></div>
     
            </div>
 
@@ -320,19 +319,27 @@
 
             </div>
 
-            <div class="col-sm-12-s101 spacing black">
+            
+            <div id="dots-container"></div>
 
-
-                
+            <div id="slide-text">
+              <p id="text-item"></p>
             </div>
 
+                <div id="slider">
+                    <div id="slides">
+                      <div class="slide">
+                        <img src="./media/38.jpg" alt="Item 01">
+                      </div>
+                      <div class="slide">
+                        <img src="./media/39.jpg" alt="Item 02">
+                      </div>
+                      <div class="slide">
+                        <img src="./media/40.jpg" alt="Item 03">
+                      </div>
+                    </div>
+                  </div>
 
-
-
-
-
-
-         
  
         </div>
 
@@ -435,6 +442,46 @@
 
     <script type="text/javascript" src="./js/slick.min.js"></script>
     <script src="./js/main.js"></script>
+
+    <script>
+        const slides = document.getElementById('slides');
+        const dotsContainer = document.getElementById('dots-container');
+        const textItem = document.getElementById('text-item');
+      
+        const slideTexts = ["Branco", "Azul", "Preto"];
+      
+        let currentSlide = 0;
+      
+        function showSlide(index) {
+          slides.style.transform = `translateX(${-index * 100}%)`;
+          textItem.textContent = slideTexts[index];
+      
+          const dots = document.querySelectorAll('.dot');
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+          });
+        }
+      
+        function createDots() {
+          for (let i = 0; i < slideTexts.length; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            dot.addEventListener('click', () => showSlide(i));
+            dotsContainer.appendChild(dot);
+          }
+        }
+      
+        function autoPlay() {
+          setInterval(() => {
+            currentSlide = (currentSlide + 1) % slideTexts.length;
+            showSlide(currentSlide);
+          }, 3000); // Altera o slide a cada 3 segundos
+        }
+      
+        createDots();
+        showSlide(currentSlide);
+        autoPlay();
+      </script>
 
 </body>
 </html>
